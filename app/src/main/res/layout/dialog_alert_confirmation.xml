@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/alert_circle_outline"/>
+
+        <TextView
+            android:id="@+id/tvWindowTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivLogo"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/text_size_large"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/color_background" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="72dp">
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/activity_vertical_margin"
+                android:textSize="@dimen/text_size_small" />
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_gravity="start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:padding="@dimen/activity_vertical_margin"
+                android:text="@string/accept"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:background="@drawable/button_selector"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:padding="@dimen/activity_vertical_margin"
+                android:text="@string/cancel"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:background="@drawable/button_selector"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

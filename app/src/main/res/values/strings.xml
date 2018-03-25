@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">CoffeeMaker</string>
+    <string name="ok">OK</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="warning">Aviso</string>
+    <string name="error">Error</string>
+    <string name="want_to_turn_on">Deseas encender la cafetera?</string>
+    <string name="want_to_turn_off">Deseas apagar la cafetera?</string>
+    <string name="no_data">No hay datos de la cafetera. Presione nuevamente el botón de encender.</string>
+    <string name="coffee_maker_turned_on">Cafetera ya está encendida!</string>
+    <string name="not_enough_water">No hay suficiente agua.</string>
+    <string name="coffee_ready">Café listo. Falta retirar la taza.</string>
+    <string name="coffee_in_preparation">Preparando café. Sé paciente por favor :)</string>
+    <string name="coffee_maker_sleeping_1">Cafetera descansando. Espera</string>
+    <string name="coffee_maker_sleeping_2"> minutos por favor :)</string>
+    <string name="timer_default">00:00 mm:ss</string>
+    <string name="timer_format"> mm:ss</string>
+    <string name="bg_header">Fondo de cabecera</string>
+    <string name="bg_msg">Fondo de mensaje</string>
+    <string name="timer">Timer</string>
+    <string name="water_tank">Tanque de agua</string>
+    <string name="left_arrow">Flecha decorativa izquierda</string>
+    <string name="right_arrow">Flecha decorativa derecha</string>
+
+
+</resources>

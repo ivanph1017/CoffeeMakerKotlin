@@ -1,0 +1,19 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="text_size_xlarge">24sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_xsmall">14sp</dimen>
+    <dimen name="text_guide_title">14sp</dimen>
+    <dimen name="text_guide_description">12sp</dimen>
+    <dimen name="indicator_spacing">4dp</dimen>
+    <dimen name="viewpager_padding_bottom">56dp</dimen>
+    <dimen name="textview_min_height">90dp</dimen>
+    <dimen name="default_thickness">4dp</dimen>
+    <integer name="default_anim_duration">3000</integer>
+    <integer name="default_anim_step">3</integer>
+    <integer name="default_start_angle">-90</integer>
+</resources>
