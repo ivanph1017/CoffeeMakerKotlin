@@ -1,5 +1,9 @@
 # CoffeeMakerKotlin
 
+This is part of project to manage a coffee maker remotely. More details can be found here:
+
+- [CoffeeMaker](https://github.com/ivanph1017/CoffeeMaker)
+
 The Android app was developed in Kotlin following clean arquitecture, repository, factory, observer-subcriber and MVVM patterns. More details can be found here: 
 
 - [MVVM arquitecture guide](https://developer.android.com/topic/libraries/architecture/guide.html) by Google
