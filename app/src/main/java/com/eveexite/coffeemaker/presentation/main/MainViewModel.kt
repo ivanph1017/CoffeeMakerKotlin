@@ -5,10 +5,12 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.eveexite.coffeemaker.di.annotations.PerActivity
+import com.eveexite.coffeemaker.domain.usecase.CheckTurnOn
 import com.eveexite.coffeemaker.domain.usecase.GetCoffeeMaker
 import com.eveexite.coffeemaker.domain.usecase.TurnOnCoffeeMaker
 import com.eveexite.coffeemaker.presentation.main.mapper.CoffeeMakerUiMapper
-import com.eveexite.coffeemaker.presentation.main.model.*
+import com.eveexite.coffeemaker.presentation.main.model.AnimUi
+import com.eveexite.coffeemaker.presentation.main.model.InfoUi
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -19,10 +21,10 @@ import javax.inject.Inject
 
 @PerActivity
 class MainViewModel @Inject constructor(private val getCoffeeMaker: GetCoffeeMaker,
+                                        private val checkTurnOn: CheckTurnOn,
                                         private val turnOnCoffeeMaker: TurnOnCoffeeMaker,
                                         private val mapper: CoffeeMakerUiMapper): ViewModel() {
 
-    private var coffeeMakerLive = MutableLiveData<CoffeeMakerUi>()
     private var infoLive = MutableLiveData<InfoUi>()
     private var statusTextLive = MutableLiveData<String>()
     private var animLive = MutableLiveData<AnimUi>()
@@ -56,14 +58,12 @@ class MainViewModel @Inject constructor(private val getCoffeeMaker: GetCoffeeMak
     }
 
     fun loadCoffeeMaker() {
-        cd.add(getCoffeeMaker.get().map { t -> mapper.reverseMap(t) }
+        cd.add(getCoffeeMaker.execute().map { t -> mapper.reverseMap(t) }
                 .subscribe({ coffeeMakerUi ->
-                    // Just for storing info here
-                    coffeeMakerLive.postValue(coffeeMakerUi)
                     // Ui Changes
-                    infoLive.postValue(coffeeMakerUi.info)
-                    statusTextLogic(coffeeMakerUi.statusText)
-                    animLogic(coffeeMakerUi.anim)
+                    infoLive.postValue(coffeeMakerUi.infoUi)
+                    statusTextLogic(coffeeMakerUi.statusUi.text)
+                    animLogic(coffeeMakerUi.animUi)
                 }, { throwable ->
                     Log.e("Error", throwable.message!!)
                     msgFinishLive.postValue(Pair("Error fatal", throwable.message!!
@@ -90,33 +90,23 @@ class MainViewModel @Inject constructor(private val getCoffeeMaker: GetCoffeeMak
     }
 
     fun checkAction() {
-        val pair: Pair<String, String>
-        if (infoLive.value == null) {
-            pair = Pair("Aviso", StatusTextUi.COFFEE_MAKER_UNPLUGGED.text)
-            msgLive.postValue(pair)
-        } else {
-            pair = Pair("Aviso", if (coffeeMakerLive.value!!.turnOn) "Deseas apagar la cafetera?"
-            else "Deseas encender la cafetera?")
+        var pair: Pair<String, String>
+        cd.add(checkTurnOn.execute().subscribe({ msg ->
+            pair = Pair("Aviso", msg)
             msgConfirmLive.postValue(pair)
-        }
+        }, { throwable ->
+            Log.e("Aviso", throwable.message!!)
+            pair = Pair("Aviso", throwable.message!!)
+            msgLive.postValue(pair)
+        }))
     }
 
     fun checkCoffeeMakerStatus() {
-        val pair: Pair<String, String>
-        when (coffeeMakerLive.value!!.statusCodeUi) {
-            StatusCodeUi.COFFEE_MAKER_READY -> {
-                turnOnCoffeeMaker.turnOn(true)
-            }
-            StatusCodeUi.COFFEE_MAKER_UNPLUGGED,
-            StatusCodeUi.NOT_ENOUGH_WATER,
-            StatusCodeUi.COFFEE_MAKER_RESTING -> {
-                pair = Pair("Error", coffeeMakerLive.value!!.statusText)
-                msgLive.postValue(pair)
-            }
-            StatusCodeUi.COFFEE_READY, StatusCodeUi.PREPARING_COFFEE -> {
-                turnOnCoffeeMaker.turnOn(false)
-            }
-        }
+        cd.add(turnOnCoffeeMaker.execute().subscribe({ _ ->  }, { throwable ->
+            Log.e("Error", throwable.message!!)
+            val pair: Pair<String, String> = Pair("Error", throwable.message!!)
+            msgLive.postValue(pair)
+        }))
     }
 
     fun onDestroy() {

@@ -10,7 +10,7 @@ import javax.inject.Inject
  */
 
 class CoffeeMakerEntityMapper @Inject
-constructor(private val mapper: StatusEntityMapper): Mapper<CoffeeMaker, CoffeeMakerEntity>() {
+constructor(private val mapper: CoffeeMakerNetStatusEntityMapper): Mapper<CoffeeMaker, CoffeeMakerEntity>() {
 
     override fun map(value: CoffeeMaker): CoffeeMakerEntity {
         return CoffeeMakerEntity(value.turnOn,

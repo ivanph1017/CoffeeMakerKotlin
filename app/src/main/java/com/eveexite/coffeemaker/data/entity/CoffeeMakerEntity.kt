@@ -10,7 +10,7 @@ data class CoffeeMakerEntity(
         var coffeeReady : Boolean = false,
         var coffeeMakerReady : Boolean = false,
         var timer : String = "00:00",
-        var timerSleep : String = "5",
+        var timerSleep : Int = 5,
         var waterLevel : Int = 0,
-        var status: StatusEntity = StatusEntity()
+        var status: CoffeeMakerNetStatusEntity = CoffeeMakerNetStatusEntity()
 )

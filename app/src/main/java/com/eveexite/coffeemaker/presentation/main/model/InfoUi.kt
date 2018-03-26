@@ -6,6 +6,6 @@ package com.eveexite.coffeemaker.presentation.main.model
  */
 data class InfoUi(
         var timer: String,
-        var timerSleep: String,
+        var timerSleep: Int,
         var waterLevel: Int
 )

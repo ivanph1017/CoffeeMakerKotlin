@@ -11,7 +11,7 @@ import javax.inject.Inject
  *
  */
 class CoffeeMakerUiMapper @Inject
-internal constructor(private val mapper: StatusCodeUiMapper): Mapper<CoffeeMakerUi, CoffeeMaker>(){
+internal constructor(private val mapper: StatusUiMapper): Mapper<CoffeeMakerUi, CoffeeMaker>(){
 
     override fun map(value: CoffeeMakerUi): CoffeeMaker {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -20,7 +20,7 @@ internal constructor(private val mapper: StatusCodeUiMapper): Mapper<CoffeeMaker
     override fun reverseMap(value: CoffeeMaker): CoffeeMakerUi {
         return CoffeeMakerUi(value.turnOn,
                 InfoUi(value.timer, value.timerSleep, value.waterLevel),
-                mapper.reverseMap(value.statusCode))
+                mapper.reverseMap(value.status))
     }
 
 }

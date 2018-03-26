@@ -6,37 +6,22 @@ package com.eveexite.coffeemaker.presentation.main.model
  */
 data class CoffeeMakerUi(
         var turnOn: Boolean,
-        var info: InfoUi,
-        var statusCodeUi: StatusCodeUi
+        var infoUi: InfoUi,
+        var statusUi: StatusUi
 ) {
 
-    var statusText = makeStatusText()
-    var anim: AnimUi = AnimUi(makeFileUri(), playAnimation())
-
-    private fun makeStatusText(): String {
-        return when (statusCodeUi) {
-            StatusCodeUi.COFFEE_MAKER_UNPLUGGED -> StatusTextUi.COFFEE_MAKER_UNPLUGGED.text
-            StatusCodeUi.COFFEE_MAKER_READY -> StatusTextUi.COFFEE_MAKER_READY.text
-            StatusCodeUi.NOT_ENOUGH_WATER -> StatusTextUi.NOT_ENOUGH_WATER.text
-            StatusCodeUi.COFFEE_READY -> StatusTextUi.COFFEE_READY.text
-            StatusCodeUi.PREPARING_COFFEE -> StatusTextUi.PREPARING_COFFEE.text
-            StatusCodeUi.COFFEE_MAKER_RESTING -> if (info.timerSleep.trim()
-                            .equals("", ignoreCase = true))
-                StatusTextUi.COFFEE_MAKER_RESTING.text else
-                "Cafetera descansando. Espera ${info.timerSleep} minutos por favor :)"
-        }
-    }
+    var animUi: AnimUi = AnimUi(makeFileUri(), playAnimation())
 
     private fun makeFileUri(): String {
-        return when (statusCodeUi) {
-            StatusCodeUi.COFFEE_READY -> "coffee_cup.json"
+        return when (statusUi) {
+            StatusUi.COFFEE_READY -> "coffee_cup.json"
             else -> "coffee_maker.json"
         }
     }
 
     private fun playAnimation(): Boolean {
-        return when (statusCodeUi) {
-            StatusCodeUi.COFFEE_READY, StatusCodeUi.PREPARING_COFFEE -> true
+        return when (statusUi) {
+            StatusUi.COFFEE_READY, StatusUi.PREPARING_COFFEE -> true
             else -> false
         }
     }

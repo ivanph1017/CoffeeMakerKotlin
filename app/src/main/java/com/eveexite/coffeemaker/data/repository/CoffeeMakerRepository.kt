@@ -5,6 +5,7 @@ import com.eveexite.coffeemaker.data.repository.datasource.Datasource
 import com.eveexite.coffeemaker.data.repository.datasource.mapper.CoffeeMakerEntityMapper
 import com.eveexite.coffeemaker.domain.model.CoffeeMaker
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.annotations.NonNull
 import javax.inject.Inject
 
@@ -24,8 +25,13 @@ constructor(@NonNull coffeeMakerDataSourceFactory: CoffeeMakerDataSourceFactory,
                 .map { coffeeMakerEntity -> mapper.reverseMap(coffeeMakerEntity) }
     }
 
-    override fun turnOnCoffeeMaker(turnOn: Boolean) {
-        datasource.turnOnCoffeeMakerEntity(turnOn)
+    override fun getSingleCoffeeMaker(): Observable<CoffeeMaker> {
+        return datasource.getSingleCoffeeMakerEntity()
+                .map { coffeeMakerEntity -> mapper.reverseMap(coffeeMakerEntity) }
+    }
+
+    override fun turnOnCoffeeMaker(turnOn: Boolean): Observable<Boolean> {
+        return datasource.turnOnCoffeeMakerEntity(turnOn)
     }
 
 }

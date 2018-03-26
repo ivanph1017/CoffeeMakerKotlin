@@ -11,7 +11,7 @@ import javax.inject.Inject
  */
 class GetCoffeeMaker @Inject constructor(private val repository: CoffeeMakerRepository){
 
-    fun get(): Flowable<CoffeeMaker> {
+    fun execute(): Flowable<CoffeeMaker> {
         return repository.getCoffeeMaker()
     }
 

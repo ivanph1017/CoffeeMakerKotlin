@@ -1,10 +1,10 @@
-package com.eveexite.coffeemaker.domain.model
+package com.eveexite.coffeemaker.presentation.main.model
 
 /**
  * Created by Ivan on 18/03/2018.
  *
  */
-enum class Status(val code: Int, val text: String) {
+enum class StatusUi(val code: Int, val text: String) {
 
     COFFEE_MAKER_UNPLUGGED(0, "No hay conexión con la cafetera."),
     COFFEE_MAKER_READY(1, "Cafetera lista para encender"),
