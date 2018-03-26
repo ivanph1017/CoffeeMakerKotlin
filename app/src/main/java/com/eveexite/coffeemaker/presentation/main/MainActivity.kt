@@ -65,8 +65,8 @@ class MainActivity : BaseActivity<MainViewModel>() {
         it?.let {
             vMain.clearAnimation()
             vMain.setAnimation(it.fileUri)
-            vMain.progress = 0.0f
-            if (it.canPlayAnim) vMain.playAnimation() else vMain.cancelAnimation()
+            vMain.progress = 0.0F
+            if (it.canPlayAnim) vMain.playAnimation()
         }
     }
 
