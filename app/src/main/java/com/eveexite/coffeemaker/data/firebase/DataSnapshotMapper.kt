@@ -46,7 +46,7 @@ abstract class DataSnapshotMapper<T, U: Any> : Function<T, U> {
         override fun apply(dataSnapshot: DataSnapshot): LinkedHashMap<String, U> {
             val items = LinkedHashMap<String, U>()
             for (childSnapshot in dataSnapshot.children) {
-                items[childSnapshot.key] = getDataSnapshotTypedValue(childSnapshot, kClass)
+                items[childSnapshot.key!!] = getDataSnapshotTypedValue(childSnapshot, kClass)
             }
             return items
         }
@@ -74,7 +74,7 @@ abstract class DataSnapshotMapper<T, U: Any> : Function<T, U> {
             val dataSnapshot: DataSnapshot? = t.value
             return if (dataSnapshot!!.exists()) {
                 RxFirebaseChildEvent<U>(
-                        dataSnapshot.key,
+                        dataSnapshot.key!!,
                         getDataSnapshotTypedValue(dataSnapshot, kClass),
                         t.previousChildName!!,
                         t.eventType!!

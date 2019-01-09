@@ -54,33 +54,33 @@ object RxFirebaseDatabase {
             query: Query): Flowable<RxFirebaseChildEvent<DataSnapshot>> {
         return Flowable.create({ fe ->
             val childEventListener = query.addChildEventListener(object : ChildEventListener {
-                override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String) {
-                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key,
+                override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
+                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key!!,
                             dataSnapshot,
-                            previousChildName,
+                            previousChildName!!,
                             RxFirebaseChildEvent.EventType.ADDED
                     ))
                 }
 
-                override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String) {
-                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key,
+                override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
+                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key!!,
                             dataSnapshot,
-                            previousChildName,
+                            previousChildName!!,
                             RxFirebaseChildEvent.EventType.CHANGED
                     ))
                 }
 
                 override fun onChildRemoved(dataSnapshot: DataSnapshot) {
-                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key,
+                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key!!,
                             dataSnapshot,
                             RxFirebaseChildEvent.EventType.REMOVED
                     ))
                 }
 
-                override fun onChildMoved(dataSnapshot: DataSnapshot, previousChildName: String) {
-                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key,
+                override fun onChildMoved(dataSnapshot: DataSnapshot, previousChildName: String?) {
+                    fe.onNext(RxFirebaseChildEvent(dataSnapshot.key!!,
                             dataSnapshot,
-                            previousChildName,
+                            previousChildName!!,
                             RxFirebaseChildEvent.EventType.MOVED
                     ))
                 }
@@ -88,6 +88,8 @@ object RxFirebaseDatabase {
                 override fun onCancelled(databaseError: DatabaseError) {
                     fe.onError(RxFirebaseDataException(databaseError))
                 }
+
+
             })
             fe.setDisposable(Disposables.fromAction { query.removeEventListener(childEventListener) })
         }, BackpressureStrategy.BUFFER
