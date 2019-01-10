@@ -1,0 +1,9 @@
+*.class
+.idea
+.git
+.gradle
+CoffeeMakerKotlin.iml
+local.properties
+app/build
+app/app.iml
+app/google-services.json
