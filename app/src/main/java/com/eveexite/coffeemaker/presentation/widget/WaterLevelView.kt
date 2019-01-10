@@ -169,7 +169,7 @@ class WaterLevelView : SurfaceView, SurfaceHolder.Callback {
         canvas.drawText("1 taza",
                 offsetStart - 75,
                 25 + (rectContainer!!.height() - 50) / 5 * 4 - TitleUtils.textHeight(textPaint!!) / 2,
-                textPaint)
+                textPaint!!)
 
         canvas.drawPath(drawHalfCurveLine(offsetStart,
                 (rectContainer!!.height() - 50) / 5 * 4,
@@ -177,7 +177,7 @@ class WaterLevelView : SurfaceView, SurfaceHolder.Callback {
                 (rectContainer!!.height() - 50) / 5 * 4,
                 - 45,
                 Path()),
-                recipientPaint)
+                recipientPaint!!)
 
         //Nivel 2 tazas = 300 mL
 
@@ -243,7 +243,7 @@ class WaterLevelView : SurfaceView, SurfaceHolder.Callback {
                 path.lineTo(offsetStart + 1,
                         rectContainer!!.height() - 25)
                 //Dibujar
-                canvas.drawPath(path, waterPaint)
+                canvas.drawPath(path, waterPaint!!)
             }
             0 -> {
             }

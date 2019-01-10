@@ -1,8 +1,8 @@
 package com.eveexite.coffeemaker.presentation.main
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import android.util.Log
 import com.eveexite.coffeemaker.di.annotations.PerActivity
 import com.eveexite.coffeemaker.domain.usecase.CheckTurnOn

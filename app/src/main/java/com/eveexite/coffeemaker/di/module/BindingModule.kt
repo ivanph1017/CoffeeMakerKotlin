@@ -1,6 +1,6 @@
 package com.eveexite.coffeemaker.di.module
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.eveexite.coffeemaker.presentation.main.MainViewModel
 import com.eveexite.coffeemaker.di.annotations.PerActivity
 import com.eveexite.coffeemaker.di.annotations.ViewModelKey
