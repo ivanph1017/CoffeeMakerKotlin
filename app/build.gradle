@@ -7,11 +7,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.eveexite.coffeemaker"
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.0.0"
+    def lifecycle_version = "2.1.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -36,15 +36,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     // Android support
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
-    implementation 'com.google.android.material:material:1.1.0-alpha02'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0-beta02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
     implementation 'androidx.multidex:multidex:2.0.1'
 
     // Google Play Services
-    implementation 'com.google.firebase:firebase-core:16.0.6'
-    implementation 'com.google.firebase:firebase-database:16.0.5'
-    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-database:19.2.0'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
 
     // Architecture Components
     // ViewModel and LiveData
@@ -56,44 +56,44 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 
     // UI
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    implementation 'com.airbnb.android:lottie:2.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    implementation 'com.airbnb.android:lottie:3.2.2'
 
     //Utils
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     // Reactive
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
     // implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     // Dagger 2
-    implementation 'com.google.dagger:dagger:2.20'
-    implementation 'com.google.dagger:dagger-android-support:2.20'
-    kapt 'com.google.dagger:dagger-compiler:2.20'
-    kapt 'com.google.dagger:dagger-android-processor:2.20'
+    implementation 'com.google.dagger:dagger:2.25.2'
+    implementation 'com.google.dagger:dagger-android-support:2.25.2'
+    kapt 'com.google.dagger:dagger-compiler:2.25.2'
+    kapt 'com.google.dagger:dagger-android-processor:2.25.2'
 
     compileOnly 'org.glassfish:javax.annotation:10.0-b28'
 
-    kapt 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta02'
-    compileOnly 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta02'
+    kapt 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta08'
+    compileOnly 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta08'
 
     // Testing
     testImplementation 'junit:junit:4.12'
 
     // AndroidJUnitRunner and JUnit Rules
-    androidTestImplementation 'androidx.test:rules:1.1.1'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
 
     // Espresso dependencies
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
 
     // The following Espresso dependency can be either "compile"
     // or "androidTestCompile", depending on your app's implementation
 
-    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

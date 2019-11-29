@@ -1,5 +1,6 @@
 package com.eveexite.coffeemaker.presentation.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
@@ -74,6 +75,7 @@ class TitleView : SurfaceView, SurfaceHolder.Callback {
         surfaceHolder!!.addCallback(this)
     }
 
+    @SuppressLint("CheckResult")
     override fun surfaceCreated(holder: SurfaceHolder) {
         Observable.interval(TimeUnit.SECONDS.toNanos(1) / 300, TimeUnit.NANOSECONDS)
                 .subscribe { _ ->
@@ -86,11 +88,11 @@ class TitleView : SurfaceView, SurfaceHolder.Callback {
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-
+        //do nothing
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
-
+        //do nothing
     }
 
     override fun onDraw(canvas: Canvas) {
